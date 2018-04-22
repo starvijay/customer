@@ -21,31 +21,31 @@ public class ListViewAdapter extends BaseAdapter {
     // Declare Variables
     Context mContext;
     LayoutInflater inflater;
-    private List<SearchProducts> productlist = null;
-    private ArrayList<SearchProducts> arraylist;
+    private List<SearchCustomer> customerlist = null;
+    private ArrayList<SearchCustomer> arraylist;
 
-    public ListViewAdapter(Context context, List<SearchProducts> productlist) {
+    public ListViewAdapter(Context context, List<SearchCustomer> customerlist) {
         mContext = context;
-        this.productlist = productlist;
+        this.customerlist = customerlist;
         inflater = LayoutInflater.from(mContext);
-        this.arraylist = new ArrayList<SearchProducts>();
-        this.arraylist.addAll(productlist);
+        this.arraylist = new ArrayList<SearchCustomer>();
+        this.arraylist.addAll(customerlist);
     }
 
     public class ViewHolder {
-        TextView rank;
-        TextView country;
-        TextView population;
+        TextView name;
+        TextView email;
+        TextView mobile;
     }
 
     @Override
     public int getCount() {
-        return productlist.size();
+        return customerlist.size();
     }
 
     @Override
-    public SearchProducts getItem(int position) {
-        return productlist.get(position);
+    public SearchCustomer getItem(int position) {
+        return customerlist.get(position);
     }
 
     @Override
@@ -59,17 +59,17 @@ public class ListViewAdapter extends BaseAdapter {
             holder = new ViewHolder();
             view = inflater.inflate(R.layout.listview_item, null);
             // Locate the TextViews in listview_item.xml
-            holder.rank = (TextView) view.findViewById(R.id.rank);
-            holder.country = (TextView) view.findViewById(R.id.country);
-            holder.population = (TextView) view.findViewById(R.id.product);
+            holder.name = (TextView) view.findViewById(R.id.name);
+            holder.email = (TextView) view.findViewById(R.id.email);
+            holder.mobile = (TextView) view.findViewById(R.id.mobile);
             view.setTag(holder);
         } else {
             holder = (ViewHolder) view.getTag();
         }
         // Set the results into TextViews
-        holder.rank.setText(productlist.get(position).getRank());
-        holder.country.setText(productlist.get(position).getCountry());
-        holder.population.setText(productlist.get(position).getProduct());
+        holder.name.setText(customerlist.get(position).getName());
+        holder.email.setText(customerlist.get(position).getEmail());
+        holder.mobile.setText(customerlist.get(position).getMobile());
 
         // Listen for ListView Item Click
         view.setOnClickListener(new OnClickListener() {
@@ -79,11 +79,11 @@ public class ListViewAdapter extends BaseAdapter {
                 // Send single item click data to SingleItemView Class
                 Intent intent = new Intent(mContext, SingleItemView.class);
                 // Pass all data rank
-                intent.putExtra("rank",(productlist.get(position).getRank()));
+                intent.putExtra("Name",(customerlist.get(position).getName()));
                 // Pass all data country
-                intent.putExtra("country",(productlist.get(position).getCountry()));
+                intent.putExtra("Email",(customerlist.get(position).getEmail()));
                 // Pass all data population
-                intent.putExtra("population",(productlist.get(position).getProduct()));
+                intent.putExtra("Mobile",(customerlist.get(position).getMobile()));
                 // Pass all data flag
                 // Start SingleItemView Class
                 mContext.startActivity(intent);
@@ -96,21 +96,21 @@ public class ListViewAdapter extends BaseAdapter {
     // Filter Class
     public void filter(String charText) {
         charText = charText.toLowerCase(Locale.getDefault());
-        productlist.clear();
+        customerlist.clear();
         if (charText.length() == 0) {
-            productlist.addAll(arraylist);
+            customerlist.addAll(arraylist);
         }
         else
         {
-            for (SearchProducts wp : arraylist)
+            for (SearchCustomer wp : arraylist)
             {
-                if (wp.getCountry().toLowerCase(Locale.getDefault()).contains(charText))
+                if (wp.getName().toLowerCase(Locale.getDefault()).contains(charText))
                 {
-                    productlist.add(wp);
+                    customerlist.add(wp);
                 }
-                else if (wp.getProduct().toLowerCase(Locale.getDefault()).contains(charText))
+                else if (wp.getEmail().toLowerCase(Locale.getDefault()).contains(charText))
                 {
-                    productlist.add(wp);
+                    customerlist.add(wp);
                 }
             }
         }

@@ -10,12 +10,12 @@ import android.widget.TextView;
 
 public class SingleItemView extends Activity {
     // Declare Variables
-    TextView txtrank;
-    TextView txtcountry;
-    TextView txtproduct;
-    String rank;
-    String country;
-    String product;
+    TextView txtname;
+    TextView txtemail;
+    TextView txtmobile;
+    String name;
+    String email;
+    String mobile;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -24,20 +24,20 @@ public class SingleItemView extends Activity {
         // Retrieve data from MainActivity on item click event
         Intent i = getIntent();
         // Get the results of rank
-        rank = i.getStringExtra("rank");
+        name = i.getStringExtra("name");
         // Get the results of country
-        country = i.getStringExtra("country");
+        email = i.getStringExtra("email");
         // Get the results of population
-        product = i.getStringExtra("product");
+        mobile = i.getStringExtra("mobile");
 
         // Locate the TextViews in singleitemview.xml
-        txtrank = (TextView) findViewById(R.id.rank);
-        txtcountry = (TextView) findViewById(R.id.country);
-        txtproduct = (TextView) findViewById(R.id.product);
+        txtname = (TextView) findViewById(R.id.name);
+        txtemail = (TextView) findViewById(R.id.email);
+        txtmobile = (TextView) findViewById(R.id.mobile);
 
         // Load the results into the TextViews
-        txtrank.setText(rank);
-        txtcountry.setText(country);
-        txtproduct.setText(product);
+        txtname.setText(name);
+        txtemail.setText(email);
+        txtmobile.setText(mobile);
     }
 }

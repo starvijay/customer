@@ -3,43 +3,43 @@
     android:layout_height="fill_parent" >
  
     <TextView
-        android:id="@+id/ranklabel"
+        android:id="@+id/namelabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/ranklabel" />
+        android:text="@string/namelabel" />
  
     <TextView
-        android:id="@+id/rank"
+        android:id="@+id/name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/ranklabel" />
+        android:layout_toRightOf="@+id/namelabel" />
  
     <TextView
-        android:id="@+id/countrylabel"
+        android:id="@+id/emaillabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/ranklabel"
-        android:text="@string/countrylabel" />
+        android:layout_below="@+id/namelabel"
+        android:text="@string/emaillabel" />
  
     <TextView
-        android:id="@+id/country"
+        android:id="@+id/email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/rank"
-        android:layout_toRightOf="@+id/countrylabel" />
+        android:layout_below="@+id/name"
+        android:layout_toRightOf="@+id/emaillabel" />
  
     <TextView
-        android:id="@+id/productlabel"
+        android:id="@+id/mobilelabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/countrylabel"
-        android:text="@string/productlabel" />
+        android:layout_below="@+id/emaillabel"
+        android:text="@string/mobilelabel" />
  
     <TextView
-        android:id="@+id/product"
+        android:id="@+id/mobile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/country"
-        android:layout_toRightOf="@+id/productlabel"/>
+        android:layout_below="@+id/email"
+        android:layout_toRightOf="@+id/mobilelabel"/>
  
 </RelativeLayout>
