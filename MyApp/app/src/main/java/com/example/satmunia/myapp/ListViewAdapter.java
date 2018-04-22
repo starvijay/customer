@@ -5,6 +5,7 @@ import java.util.Locale;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,6 +31,10 @@ public class ListViewAdapter extends BaseAdapter {
         inflater = LayoutInflater.from(mContext);
         this.arraylist = new ArrayList<SearchCustomer>();
         this.arraylist.addAll(customerlist);
+    }
+    public void setAll( List<SearchCustomer> customerlist) {
+        arraylist.clear();
+       arraylist.addAll(customerlist);
     }
 
     public class ViewHolder {
@@ -78,11 +83,8 @@ public class ListViewAdapter extends BaseAdapter {
             public void onClick(View arg0) {
                 // Send single item click data to SingleItemView Class
                 Intent intent = new Intent(mContext, SingleItemView.class);
-                // Pass all data rank
                 intent.putExtra("Name",(customerlist.get(position).getName()));
-                // Pass all data country
                 intent.putExtra("Email",(customerlist.get(position).getEmail()));
-                // Pass all data population
                 intent.putExtra("Mobile",(customerlist.get(position).getMobile()));
                 // Pass all data flag
                 // Start SingleItemView Class
@@ -104,6 +106,7 @@ public class ListViewAdapter extends BaseAdapter {
         {
             for (SearchCustomer wp : arraylist)
             {
+                Log.e("name",wp.getName());
                 if (wp.getName().toLowerCase(Locale.getDefault()).contains(charText))
                 {
                     customerlist.add(wp);

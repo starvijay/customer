@@ -6,8 +6,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.IOException;
@@ -49,7 +52,7 @@ public class CustomSearch extends AppCompatActivity {
     String URL = "https://glacial-crag-90181.herokuapp.com/";
     JSONArray gg;
     JSONObject obj;
-    private ProgressDialog pDialog;
+    ProgressDialog progressDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,32 +62,54 @@ public class CustomSearch extends AppCompatActivity {
         adapter = new ListViewAdapter( this, arraylist);
         list.setAdapter(adapter);
 
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Loading..."); // Setting Message
+        progressDialog.setTitle("ProgressDialog"); // Setting Title
+        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER); // Progress Dialog Style Spinner
+        progressDialog.show(); // Display Progress Dialog
+        progressDialog.setCancelable(false);
+        new Thread(new Runnable() {
+            public void run() {
+                try {
+                    Thread.sleep(2000);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                progressDialog.dismiss();
+            }
+        }).start();
+
+
+
+        Log.e("search",arraylist.toString());
+
         // Locate the EditText in listview_main.xml
-//        editsearch = (EditText) findViewById(R.id.search);
+        editsearch = (EditText) findViewById(R.id.search);
 
         // Capture Text in EditText
-//        editsearch.addTextChangedListener(new TextWatcher() {
-//
-//            @Override
-//            public void afterTextChanged(Editable arg0) {
-//                // TODO Auto-generated method stub
-//                String text = editsearch.getText().toString().toLowerCase(Locale.getDefault());
-//                adapter.filter(text);
-//            }
-//
-//            @Override
-//            public void beforeTextChanged(CharSequence arg0, int arg1,
-//                                          int arg2, int arg3) {
-//                // TODO Auto-generated method stub
-//            }
-//
-//            @Override
-//            public void onTextChanged(CharSequence arg0, int arg1, int arg2,
-//                                      int arg3) {
-//                // TODO Auto-generated method stub
-//            }
-//        });
+        editsearch.addTextChangedListener(new TextWatcher() {
 
+            @Override
+            public void afterTextChanged(Editable arg0) {
+
+
+                String text = editsearch.getText().toString().toLowerCase(Locale.getDefault());
+                Log.e("Search sathish",text);
+                adapter.filter(text);
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence arg0, int arg1,
+                                          int arg2, int arg3) {
+                // TODO Auto-generated method stub
+            }
+
+            @Override
+            public void onTextChanged(CharSequence arg0, int arg1, int arg2,
+                                      int arg3) {
+                // TODO Auto-generated method stub
+            }
+        });
 
         RequestQueue mRequestQueue = Volley.newRequestQueue(this);
         JsonObjectRequest jo = new JsonObjectRequest(Request.Method.GET,
@@ -110,8 +135,8 @@ public class CustomSearch extends AppCompatActivity {
                             SearchCustomer wp = new SearchCustomer(name.get(i), email.get(i), mobile.get(i));
                             arraylist.add(wp);
                         }
+                        adapter.setAll(arraylist);
                         adapter.notifyDataSetChanged();
-
                     }
                 },
                 new Response.ErrorListener() {
@@ -127,5 +152,10 @@ public class CustomSearch extends AppCompatActivity {
                 DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
                 DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         mRequestQueue.add(jo);
+
+
+
+
+
     }
 }
