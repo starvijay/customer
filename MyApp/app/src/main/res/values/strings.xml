@@ -4,5 +4,8 @@
     <string name="namelabel">"Name : "</string>
     <string name="emaillabel">"Email : "</string>
     <string name="mobilelabel">"Mobile : "</string>
-
+    <string name="emailradio">"gsat@gmail.com"</string>
+    <string name="mobileradio">"9790984461"</string>
+    <string name="processbutton">"Process"</string>
 </resources>
+

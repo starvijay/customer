@@ -5,6 +5,7 @@ import java.util.Locale;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -81,13 +82,10 @@ public class ListViewAdapter extends BaseAdapter {
 
             @Override
             public void onClick(View arg0) {
-                // Send single item click data to SingleItemView Class
-                Intent intent = new Intent(mContext, SingleItemView.class);
+                Intent intent = new Intent(mContext, IntermediateView.class);
                 intent.putExtra("Name",(customerlist.get(position).getName()));
                 intent.putExtra("Email",(customerlist.get(position).getEmail()));
                 intent.putExtra("Mobile",(customerlist.get(position).getMobile()));
-                // Pass all data flag
-                // Start SingleItemView Class
                 mContext.startActivity(intent);
             }
         });

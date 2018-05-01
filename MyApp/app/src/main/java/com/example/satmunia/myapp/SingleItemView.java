@@ -3,6 +3,7 @@ package com.example.satmunia.myapp;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
 /**
  * Created by SatMunia on 19-04-2018.
@@ -24,11 +25,11 @@ public class SingleItemView extends Activity {
         // Retrieve data from MainActivity on item click event
         Intent i = getIntent();
         // Get the results of rank
-        name = i.getStringExtra("name");
+        name = i.getStringExtra("Name");
         // Get the results of country
-        email = i.getStringExtra("email");
+        email = i.getStringExtra("Email");
         // Get the results of population
-        mobile = i.getStringExtra("mobile");
+        mobile = i.getStringExtra("Mobile");
 
         // Locate the TextViews in singleitemview.xml
         txtname = (TextView) findViewById(R.id.name);
@@ -36,6 +37,7 @@ public class SingleItemView extends Activity {
         txtmobile = (TextView) findViewById(R.id.mobile);
 
         // Load the results into the TextViews
+        Log.e("single", name);
         txtname.setText(name);
         txtemail.setText(email);
         txtmobile.setText(mobile);

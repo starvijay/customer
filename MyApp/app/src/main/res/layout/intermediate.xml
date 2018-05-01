@@ -1,0 +1,41 @@
+ <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
+
+     <RadioGroup
+         android:id="@+id/radioCommunication"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content" >
+
+         <RadioButton
+             android:id="@+id/radioEmail"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="@+id/emailradio"
+             android:checked="true" />
+
+         <RadioButton
+             android:id="@+id/radioMobile"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="@+id/mobileradio" />
+         <RadioButton
+             android:id="@+id/radioPage"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="Page" />
+
+     </RadioGroup>
+
+     <Button
+         android:id="@+id/butProcess"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_alignEnd="@+id/radioCommunication"
+         android:layout_alignRight="@+id/radioCommunication"
+         android:layout_below="@+id/radioCommunication"
+         android:layout_marginTop="13dp"
+         android:text="Process" />
+
+
+ </RelativeLayout>
