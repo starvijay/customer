@@ -86,6 +86,7 @@ public class IntermediateView extends Activity {
                 intent.putExtra("Name",(i.getStringExtra("Name")));
                 intent.putExtra("Email",(i.getStringExtra("Email")));
                 intent.putExtra("Mobile",(i.getStringExtra("Mobile")));
+                intent.putExtra("Location",(i.getStringExtra("Location")));
                 IntermediateView.this.startActivity(intent);
                 }
             }

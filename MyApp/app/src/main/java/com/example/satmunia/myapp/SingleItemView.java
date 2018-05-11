@@ -14,9 +14,12 @@ public class SingleItemView extends Activity {
     TextView txtname;
     TextView txtemail;
     TextView txtmobile;
+    TextView txtlocation;
+
     String name;
     String email;
     String mobile;
+    String location;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -30,16 +33,19 @@ public class SingleItemView extends Activity {
         email = i.getStringExtra("Email");
         // Get the results of population
         mobile = i.getStringExtra("Mobile");
+        location =i.getStringExtra("Location");
 
         // Locate the TextViews in singleitemview.xml
         txtname = (TextView) findViewById(R.id.name);
         txtemail = (TextView) findViewById(R.id.email);
         txtmobile = (TextView) findViewById(R.id.mobile);
+        txtlocation = (TextView) findViewById(R.id.location);
 
         // Load the results into the TextViews
         Log.e("single", name);
         txtname.setText(name);
         txtemail.setText(email);
         txtmobile.setText(mobile);
+        txtlocation.setText(location);
     }
 }

@@ -35,13 +35,14 @@ public class ListViewAdapter extends BaseAdapter {
     }
     public void setAll( List<SearchCustomer> customerlist) {
         arraylist.clear();
-       arraylist.addAll(customerlist);
+        arraylist.addAll(customerlist);
     }
 
     public class ViewHolder {
         TextView name;
         TextView email;
         TextView mobile;
+        TextView location;
     }
 
     @Override
@@ -68,6 +69,7 @@ public class ListViewAdapter extends BaseAdapter {
             holder.name = (TextView) view.findViewById(R.id.name);
             holder.email = (TextView) view.findViewById(R.id.email);
             holder.mobile = (TextView) view.findViewById(R.id.mobile);
+            holder.location = (TextView) view.findViewById(R.id.location);
             view.setTag(holder);
         } else {
             holder = (ViewHolder) view.getTag();
@@ -76,8 +78,9 @@ public class ListViewAdapter extends BaseAdapter {
         holder.name.setText(customerlist.get(position).getName());
         holder.email.setText(customerlist.get(position).getEmail());
         holder.mobile.setText(customerlist.get(position).getMobile());
+        holder.location.setText(customerlist.get(position).getLocation());
 
-        // Listen for ListView Item Click
+                // Listen for ListView Item Click
         view.setOnClickListener(new OnClickListener() {
 
             @Override
@@ -86,6 +89,7 @@ public class ListViewAdapter extends BaseAdapter {
                 intent.putExtra("Name",(customerlist.get(position).getName()));
                 intent.putExtra("Email",(customerlist.get(position).getEmail()));
                 intent.putExtra("Mobile",(customerlist.get(position).getMobile()));
+                intent.putExtra("Location",(customerlist.get(position).getLocation()));
                 mContext.startActivity(intent);
             }
         });

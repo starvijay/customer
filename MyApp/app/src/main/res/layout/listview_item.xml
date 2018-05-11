@@ -54,6 +54,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/mobile"
-        android:layout_toRightOf="@+id/mobilelabel"/>
+        android:layout_toRightOf="@+id/locationlabel"/>
  
 </RelativeLayout>

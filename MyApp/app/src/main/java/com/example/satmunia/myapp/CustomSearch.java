@@ -48,6 +48,8 @@ public class CustomSearch extends AppCompatActivity {
     ArrayList <String> name = new ArrayList <String>();
     ArrayList <String> email= new ArrayList <String>();
     ArrayList <String> mobile= new ArrayList <String>();
+    ArrayList <String> location= new ArrayList <String>();
+
     ArrayList<SearchCustomer> arraylist = new ArrayList<SearchCustomer>();
     String URL = "https://glacial-crag-90181.herokuapp.com/download";
     JSONArray gg;
@@ -126,13 +128,14 @@ public class CustomSearch extends AppCompatActivity {
                                 name.add(obj.getString("Product"));
                                 email.add(obj.getString("email"));
                                 mobile.add(obj.getString("Phone"));
+                                location.add(obj.getString("Location"));
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
 
                         for (int i = 0; i < name.size(); i++) {
-                            SearchCustomer wp = new SearchCustomer(name.get(i), email.get(i), mobile.get(i));
+                            SearchCustomer wp = new SearchCustomer(name.get(i), email.get(i), mobile.get(i),location.get(i));
                             arraylist.add(wp);
                         }
                         adapter.setAll(arraylist);
