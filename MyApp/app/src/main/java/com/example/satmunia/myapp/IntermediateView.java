@@ -27,9 +27,8 @@ public class IntermediateView extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.intermediate);
-        // Retrieve data from MainActivity on item click event
+
         Intent i = getIntent();
-        // Get the results of country
         email = i.getStringExtra("Email");
         // Get the results of population
         mobile = i.getStringExtra("Mobile");
@@ -83,7 +82,6 @@ public class IntermediateView extends Activity {
                 IntermediateView.this.startActivity(smsIntent);
 
                 }else if(R.id.radioPage == radioCButton.getId()){
-                    // Send single item click data to SingleItemView Class
                 Intent intent = new Intent(IntermediateView.this, SingleItemView.class);
                 intent.putExtra("Name",(i.getStringExtra("Name")));
                 intent.putExtra("Email",(i.getStringExtra("Email")));

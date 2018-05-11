@@ -49,7 +49,7 @@ public class CustomSearch extends AppCompatActivity {
     ArrayList <String> email= new ArrayList <String>();
     ArrayList <String> mobile= new ArrayList <String>();
     ArrayList<SearchCustomer> arraylist = new ArrayList<SearchCustomer>();
-    String URL = "https://glacial-crag-90181.herokuapp.com/";
+    String URL = "https://glacial-crag-90181.herokuapp.com/download";
     JSONArray gg;
     JSONObject obj;
     ProgressDialog progressDialog;
@@ -123,9 +123,9 @@ public class CustomSearch extends AppCompatActivity {
                             Log.e("sathish",gg.toString());
                             for (int i = 0; i < gg.length(); i++) {
                                 obj = gg.getJSONObject(i);
-                                name.add(obj.getString("name"));
+                                name.add(obj.getString("Product"));
                                 email.add(obj.getString("email"));
-                                mobile.add(obj.getString("mobile"));
+                                mobile.add(obj.getString("Phone"));
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
